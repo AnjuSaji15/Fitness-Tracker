@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Exercise Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('images/dashboard.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 12px;
+            width: 50%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .summary {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .go-back {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .go-back:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Weekly Exercise Report</h1>
+
+        <div class="summary">
+            <p>Total Steps Taken (Weekly): <span id="weeklySteps">0</span></p>
+            <p>Total Exercise Duration (Weekly): <span id="weeklyDuration">0</span> minutes</p>
+            <p>Total Calories Burned (Weekly): <span id="weeklyCalories">0</span></p>
+        </div>
+
+        <div class="summary-message">
+            FITNESS IS NOT ABOUT BEING BETTER THAN SOMEONE ELSE. IT’S ABOUT BEING BETTER THAN YOU USED TO BE. 💪😊
+        </div>
+
+        <button class="go-back" onclick="window.location.href='fitnessgoals.html'">CONTINUE</button>
+    </div>
+
+    <script>
+        // Get stored values
+        let dailySteps = localStorage.getItem("dailySteps") || 0;
+        let dailyDuration = localStorage.getItem("dailyDuration") || 0;
+        let dailyCalories = localStorage.getItem("dailyCalories") || 0;
+
+        // Convert to numbers and calculate weekly total
+        let weeklySteps = dailySteps * 7;
+        let weeklyDuration = dailyDuration * 7;
+        let weeklyCalories = dailyCalories * 7;
+
+        // Display results
+        document.getElementById("weeklySteps").textContent = weeklySteps;
+        document.getElementById("weeklyDuration").textContent = weeklyDuration;
+        document.getElementById("weeklyCalories").textContent = weeklyCalories;
+    </script>
+
+</body>
+</html>

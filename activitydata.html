@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Activity Data</title>
+    <style>
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: url('images/fitness.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: white;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Log Your Daily Activity</h1>
+        <form id="activityForm">
+            <label for="steps">Steps Taken for Today:</label>
+            <input type="number" id="steps" name="steps" required />
+
+            <label for="exercise_duration">Exercise Duration (minutes):</label>
+            <input type="number" id="exercise_duration" name="exercise_duration" required />
+
+            <label for="calories_burned">Calories Burned:</label>
+            <input type="number" id="calories_burned" name="calories_burned" required />
+
+            <button type="submit">Save & View Weekly Summary</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("activityForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            let steps = document.getElementById("steps").value;
+            let duration = document.getElementById("exercise_duration").value;
+            let calories = document.getElementById("calories_burned").value;
+
+            // Store in localStorage
+            localStorage.setItem("dailySteps", steps);
+            localStorage.setItem("dailyDuration", duration);
+            localStorage.setItem("dailyCalories", calories);
+
+            // Redirect to summary page
+            window.location.href = "progressSummary.html";
+        });
+    </script>
+</body>
+</html>

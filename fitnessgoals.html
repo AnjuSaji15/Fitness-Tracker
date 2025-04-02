@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness Goals</title>
+    <style>
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: url('images/fitness.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: white;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Set Your Fitness Goals</h1>
+        <form id="fitnessGoalsForm" action="activitydata.html" method="get" onsubmit="return setGoals();">
+            <label for="stepsGoal">Daily Step Count Goal:</label>
+            <input type="number" id="stepsGoal" name="stepsGoal" required />
+
+            <label for="exerciseGoal">Exercise Frequency (days per week):</label>
+            <input type="number" id="exerciseGoal" name="exerciseGoal" required />
+
+            <label for="weightGoal">Weight Loss/Gain Target (kg):</label>
+            <input type="number" id="weightGoal" name="weightGoal" required />
+
+            <input type="submit" value="Set Goals" />
+        </form>
+    </div>
+
+    <script>
+        function setGoals() {
+            const stepsGoal = parseInt(document.getElementById("stepsGoal").value);
+            const exerciseGoal = parseInt(document.getElementById("exerciseGoal").value);
+            const weightGoal = parseFloat(document.getElementById("weightGoal").value);
+
+            if (isNaN(stepsGoal) || isNaN(exerciseGoal) || isNaN(weightGoal) || stepsGoal <= 0 || exerciseGoal <= 0) {
+                alert("Please enter valid positive values for your goals.");
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission and redirect
+        }
+    </script>
+
+</body>
+</html>
